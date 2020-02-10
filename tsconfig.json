@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "dom",
+      "es6"
+    ],
+    "downlevelIteration": true,
+    "strict": true,
+    "sourceMap": true
+  }
+}

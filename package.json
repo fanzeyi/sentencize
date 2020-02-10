@@ -1,0 +1,30 @@
+{
+  "name": "sentencize",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Zeyi Fan <fanzeyi1994@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chai": "^4.2.8",
+    "@types/lodash.shuffle": "^4.2.6",
+    "@types/mocha": "^7.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.19.0",
+    "@typescript-eslint/parser": "^2.19.0",
+    "chai": "^4.2.0",
+    "eslint": "^6.8.0",
+    "mocha": "^7.0.1",
+    "ts-loader": "^6.2.1",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "scripts": {
+    "build": "webpack",
+    "test": "mocha -r ts-node/register tests/**/*.ts",
+    "watch": "webpack --watch"
+  },
+  "dependencies": {
+    "lodash.shuffle": "^4.2.0"
+  }
+}
