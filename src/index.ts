@@ -8,7 +8,12 @@ function random(): boolean {
 // Split a sentence into a two or three words chunk
 export function partitionTwoThree(words: string[]): string[][] {
     return words.reduce((result: string[][], current: string) => {
-        if (result[result.length - 1].length == 2) {
+        if (current.charCodeAt(0) < 128) {
+            // if it is ASCII word, skip groupping
+            result.push([current]);
+        } else if (result.length === 0) {
+            result.push([current]);
+        } else if (result[result.length - 1].length == 2) {
             if (random()) {
                 result[result.length - 1].push(current);
             } else {
@@ -18,11 +23,23 @@ export function partitionTwoThree(words: string[]): string[][] {
             result[result.length - 1].push(current);
         }
         return result;
-    }, [[]]);
+    }, []);
 }
 
+// Split a sentence into array of words (per English word & per Chinese character)
 export function splitWords(sentence: string): string[] {
-    return [];
+    const result: string[] = sentence.split("").reduce((result: string[], char: string) => {
+        if (char.length >= 1 && char.charCodeAt(0) >= 128) {
+            result.push(char);
+        } else if (result.length !== 0 && result[result.length - 1].charCodeAt(0) < 128) {
+            result[result.length - 1] = result[result.length - 1] + char;
+        } else {
+            result.push(char);
+        }
+        return result;
+    }, []);
+
+    return result;
 }
 
 export function* sentenceReader(text: string): Generator<string, void> {
